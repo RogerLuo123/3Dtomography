@@ -15,7 +15,6 @@ void setup() {
 
 }
 void loop() {
-  //if(Serial.available()){
 
      char val=Serial.read();
     if(val=='R'){
@@ -33,12 +32,42 @@ void loop() {
         }
        // One second delay
       }
-    if(val=='L'){
+    if(val=='A'){
       //1mm per stop LEFT GO
       for(int i=0;i<1000000;i++){
       digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
       // Makes 200 pulses for making one full cycle rotation
         for (int x = 0; x < 80; x++) {
+          digitalWrite(stepPin, HIGH);
+          delayMicroseconds(500);
+          digitalWrite(stepPin, LOW);
+          delayMicroseconds(500);
+        }
+      delay(1000); // One second delay
+      }
+    }
+
+    if(val=='B'){
+      //2mm per stop LEFT GO
+      for(int i=0;i<1000000;i++){
+      digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
+      // Makes 200 pulses for making one full cycle rotation
+        for (int x = 0; x < 160; x++) {
+          digitalWrite(stepPin, HIGH);
+          delayMicroseconds(500);
+          digitalWrite(stepPin, LOW);
+          delayMicroseconds(500);
+        }
+      delay(1000); // One second delay
+      }
+    }
+
+    if(val=='C'){
+      //3mm per stop LEFT GO
+      for(int i=0;i<1000000;i++){
+      digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
+      // Makes 200 pulses for making one full cycle rotation
+        for (int x = 0; x < 240; x++) {
           digitalWrite(stepPin, HIGH);
           delayMicroseconds(500);
           digitalWrite(stepPin, LOW);
@@ -54,5 +83,4 @@ void loop() {
       digitalWrite(stepPin,LOW);
       delay(1000);
       }
-  //}
 }

@@ -13,16 +13,28 @@ int PP;
 void setup(){
   size(300, 600);
   printArray(Serial.list());
-  port = new Serial(this,"/dev/cu.usbmodem14201",9600);
+  //port = new Serial(this,"/dev/cu.usbmodem14201",9600);
   
   cp5 = new ControlP5(this);
   font = createFont("abc",20);
-  cp5.addButton("LEFT")
+    cp5.addButton("LEFT1mm")
+      .setPosition(30,10)
+      .setSize(100,80)
+      .setFont(font);
+  ;
+  
+    cp5.addButton("LEFT2mm")
     .setPosition(30,100)
     .setSize(100,80)
     .setFont(font);
   ;
-  
+
+    cp5.addButton("LEFT3mm")
+    .setPosition(30,190)
+    .setSize(100,80)
+    .setFont(font);
+  ;
+
     cp5.addButton("RIGHT")
     .setPosition(170,100)
     .setSize(100,80)
@@ -30,20 +42,20 @@ void setup(){
   ;
   
     cp5.addButton("STOP")
-    .setPosition(100,220)
+    .setPosition(100,320)
     .setSize(100,80)
     .setFont(font);
   ;
   
     cp5.addTextfield("step length (mm)")
-    .setPosition(100,340)
+    .setPosition(100,420)
     .setSize(100,40)
     .setFont(font)
     .setAutoClear(false);
   ;
     
     cp5.addBang("submit")
-    .setPosition(110,420)
+    .setPosition(110,500)
     .setSize(80,35)
     .setFont(font)
   ;
@@ -67,8 +79,16 @@ void submit(){
   port.write(PP);
 }
 
-void LEFT(){
-  port.write('L');
+void LEFT1(){
+  port.write('A');
+}
+
+void LEFT2(){
+  port.write('B');
+}
+
+void LEFT3(){
+  port.write('C');
 }
 
 void RIGHT(){
