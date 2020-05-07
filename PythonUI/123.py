@@ -82,23 +82,23 @@ The motor starts to run!
     import sdfgsdfg
 
 def left_1mm():
-    arduinoData.write('A')
+    arduinoData.write(str.encode('A'))
 
 def left_2mm():
-    arduinoData.write('B')
+    arduinoData.write(str.encode('B'))
 
 def left_3mm():
-    arduinoData.write('C')
+    arduinoData.write(str.encode('C'))
 
 def right():
-    arduinoData.write('R')
+    arduinoData.write(str.encode('R'))
 
 def stop():
-    arduinoData.write('S')
+    arduinoData.write(str.encode('S'))
 
 
-#arduinoData = serial.Serial('com4',9600)
-arduinoData = 1
+arduinoData = serial.Serial('/dev/cu.usbmodem14201',9600)
+#arduinoData = 1
 
 Button = tk.Button
 

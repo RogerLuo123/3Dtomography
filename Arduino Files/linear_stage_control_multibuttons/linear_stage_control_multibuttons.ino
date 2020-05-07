@@ -21,7 +21,9 @@ void loop() {
     //RIGHT RESET
     for(int i =0;i<1000000;i++){
       digitalWrite(dirPin,LOW); // Enables the motor to move in a particular direction
-     // Makes 200 pulses for making one full cycle rotation
+      if(Serial.read()=='S'){
+        val='S';
+        break;}
         for(int x = 0; x < 800; x++) {
           digitalWrite(stepPin,HIGH);
           delayMicroseconds(500);
@@ -37,6 +39,9 @@ void loop() {
       for(int i=0;i<1000000;i++){
       digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
       // Makes 200 pulses for making one full cycle rotation
+      if(Serial.read()=='S'){
+        val='S';
+        break;}
         for (int x = 0; x < 80; x++) {
           digitalWrite(stepPin, HIGH);
           delayMicroseconds(500);
@@ -52,6 +57,9 @@ void loop() {
       for(int i=0;i<1000000;i++){
       digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
       // Makes 200 pulses for making one full cycle rotation
+      if(Serial.read()=='S'){
+        val='S';
+        break;}
         for (int x = 0; x < 160; x++) {
           digitalWrite(stepPin, HIGH);
           delayMicroseconds(500);
@@ -67,6 +75,9 @@ void loop() {
       for(int i=0;i<1000000;i++){
       digitalWrite(dirPin, HIGH); // Enables the motor to move in a particular direction
       // Makes 200 pulses for making one full cycle rotation
+      if(Serial.read()=='S'){
+        val='S';
+        break;}
         for (int x = 0; x < 240; x++) {
           digitalWrite(stepPin, HIGH);
           delayMicroseconds(500);
