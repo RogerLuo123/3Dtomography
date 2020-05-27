@@ -6,15 +6,20 @@ import serial
 
 
 window = tk.Tk()
-window.title('Probe Rotation')
+window.title('3D Tomography motor controller')
 window.geometry('700x450')
 
+tk.Label(window, text='servo motor: ',font=('Helvetica',20,'bold italic')).place(x=50,y=20)
 tk.Label(window, text='Here you can control the motor',font=('Helvetica',20,'bold italic')).place(x=150,y=50)
 tk.Label(window, text='Speed',font=('Helvetica',14,'bold italic')).place(x=200,y=100)
+tk.Label(window, text='degree per',font=('Helvetica',14,'bold italic')).place(x=350,y=100)
+tk.Label(window, text='second',font=('Helvetica',14,'bold italic')).place(x=570,y=100)
 
-entry = tk.Entry(window, textvariable=tk.StringVar(value=()), width=16,font=('Helvetica',14,'italic'))
-entry.place(x=300,y=100)
+entry1 = tk.Entry(window, textvariable=tk.StringVar(value=()), width=8,font=('Helvetica',14,'italic'))
+entry1.place(x=250,y=100)
 
+entry2 = tk.Entry(window, textvariable=tk.StringVar(value=()), width=8,font=('Helvetica',14,'italic'))
+entry2.place(x=470,y=100)
 
 
 
@@ -96,9 +101,18 @@ def right():
 def stop():
     arduinoData.write(str.encode('S'))
 
+def onesec():
+    arduinoData.write(str.encode('U'))
 
-arduinoData = serial.Serial('/dev/cu.usbmodem14201',9600)
-#arduinoData = 1
+def twosec():
+    arduinoData.write(str.encode('I'))
+
+def threesec():
+    arduinoData.write(str.encode('O'))
+
+
+#arduinoData = serial.Serial('/dev/cu.usbmodem14201',9600)
+arduinoData = 1
 
 Button = tk.Button
 
@@ -107,14 +121,26 @@ btn2 = Button(window, text="left 2mm", command=left_2mm)
 btn3 = Button(window, text="left 3mm", command=left_3mm)
 btn4 = Button(window, text="right", command=right)
 btn5 = Button(window, text="stop", command=stop)
+btn6 = Button(window, text="1 second/stop", command=onesec)
+btn7 = Button(window, text="2 seconds/stop", command=twosec)
+btn8 = Button(window, text="3 seconds/stop", command=threesec)
 
 
 
-btn1.place(x=200,y=200)
-btn2.place(x=200,y=250)
-btn3.place(x=200,y=300)
-btn4.place(x=300,y=200)
-btn5.place(x=400,y=200)
+tk.Label(window, text='linear stage: ',font=('Helvetica',20,'bold italic')).place(x=50,y=200)
+tk.Label(window, text='timedelay/stop ',font=('Helvetica',10,'bold italic')).place(x=80,y=230)
+tk.Label(window, text='moving distance ',font=('Helvetica',10,'bold italic')).place(x=190,y=230)
+tk.Label(window, text='reset ',font=('Helvetica',10,'bold italic')).place(x=300,y=230)
+
+btn1.place(x=200,y=250)
+btn2.place(x=200,y=300)
+btn3.place(x=200,y=350)
+btn4.place(x=300,y=250)
+btn5.place(x=360,y=250)
+btn6.place(x=80,y=250)
+btn7.place(x=80,y=300)
+btn8.place(x=80,y=350)
+
 
 
 #window.mainloop()
